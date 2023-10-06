@@ -37,9 +37,11 @@ echo "Secret Access Key: $SECRET_KEY" >> terraform_user_accessKeys.txt
 # Create S3 Bucket
 S3_BUCKET_NAME="tf-remote-bucket-digitalden"
 aws s3 mb "s3://$S3_BUCKET_NAME" --region "us-east-1"
+check_exit_status "Failed to create S3 bucket."
 
 # Enable Versioning for S3 Bucket
 aws s3api put-bucket-versioning --bucket "$S3_BUCKET_NAME" --versioning-configuration Status=Enabled
+check_exit_status "Failed to apply policy to the S3 bucket."
 
 # Create DynamoDB Table
 aws dynamodb create-table \
@@ -48,12 +50,15 @@ aws dynamodb create-table \
   --key-schema AttributeName=LockID,KeyType=HASH \
   --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
   --region "us-east-1"
+check_exit_status "Failed to create DynamoDB table."
 
 # Apply the sed command to a JSON file
 sed -e "s/RESOURCE/arn:aws:s3:::$S3_BUCKET_NAME/g" \
     -e "s/KEY/terraform.tfstate/g" \
     -e "s|ARN|$USER_ARN|g" "$(dirname "$0")/s3_policy.json" > new-policy.json
+check_exit_status "Failed to execute the 'sed' command for JSON transformation."
 aws s3api put-bucket-policy --bucket "$S3_BUCKET_NAME" --policy file://new-policy.json
+check_exit_status "Failed to apply policy to the S3 bucket."
 rm new-policy.json
 
 # Echo a confirmation message
