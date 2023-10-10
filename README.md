@@ -15,11 +15,11 @@
 - Amazon DynamoDB
 
 ## More Info
-🔗 [Video Demo ](https://youtu.be/-qTvkOolvQc)
-🔗 [Blog ](https://aws.plainenglish.io/setting-up-terraform-remote-backend-with-aws-using-a-bash-script-6549d8e62a6)
+[📺 Video Demo ](https://youtu.be/-qTvkOolvQc) <br>
+[📚 Read More ](https://aws.plainenglish.io/setting-up-terraform-remote-backend-with-aws-using-a-bash-script-6549d8e62a6)
 
 
-## Overivew
+## Overview
 Welcome to the GitHub repository that hosts the scripts used to configure a Terraform backend using S3 and DynamoDB.
 
 The Terraform "chicken-and-egg problem" on AWS is the challenge of deciding whether to create AWS resources first or configure Terraform's state storage. You need both, but defining one depends on the other, creating a circular dilemma. Strategies like using a Bash script can help break this loop and manage Terraform state effectively.
