@@ -14,8 +14,10 @@
 - Amazon S3
 - Amazon DynamoDB
 
-## Video Demo
-🔗 [Setting Up Terraform Remote Backend With AWS Using A Bash Script](https://www.youtube.com)
+## More Info
+🔗 [Video Demo ](https://youtu.be/-qTvkOolvQc)
+🔗 [Blog ](https://aws.plainenglish.io/setting-up-terraform-remote-backend-with-aws-using-a-bash-script-6549d8e62a6)
+
 
 ## Overivew
 Welcome to the GitHub repository that hosts the scripts used to configure a Terraform backend using S3 and DynamoDB.
