@@ -35,8 +35,8 @@ echo "Access Key: $ACCESS_KEY" >> terraform_user_accessKeys.txt
 echo "Secret Access Key: $SECRET_KEY" >> terraform_user_accessKeys.txt
 
 # Create S3 Bucket
-S3_BUCKET_NAME="tf-remote-bucket-digitalden"
-aws s3 mb "s3://$S3_BUCKET_NAME" --region "us-east-1"
+S3_BUCKET_NAME="tf-remote-bucket-museelver"
+aws s3 mb "s3://$S3_BUCKET_NAME" --region "ap-south-1"
 check_exit_status "Failed to create S3 bucket."
 
 # Enable Versioning for S3 Bucket
@@ -49,7 +49,7 @@ aws dynamodb create-table \
   --attribute-definitions AttributeName=LockID,AttributeType=S \
   --key-schema AttributeName=LockID,KeyType=HASH \
   --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
-  --region "us-east-1"
+  --region "ap-south-1"
 check_exit_status "Failed to create DynamoDB table."
 
 # Apply the sed command to a JSON file
@@ -62,7 +62,7 @@ check_exit_status "Failed to apply policy to the S3 bucket."
 rm new-policy.json
 
 # Echo a confirmation message
-echo "Resources created in AWS region: us-east-1"
+echo "Resources created in AWS region: ap-south-1"
 echo "IAM User created successfully. Username: $USER_NAME"
 echo "S3 Bucket created successfully: $S3_BUCKET_NAME (Versioning enabled)"
 echo "DynamoDB Table created successfully: tf-lock-table"

@@ -1,11 +1,11 @@
-terraform {
+/*terraform {
   backend "s3" {
     bucket         = "tf-remote-bucket-digitalden"
     key            = "tf-remote-bucket-digitalden/tf-aws-backend-bash-script/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "tf-lock-table"
   }
-}
+}*/
 
 terraform {
   required_providers {
